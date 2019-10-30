@@ -2,7 +2,7 @@
 
 namespace QuickBuy.Dominio.Entidades
 {
-    internal class Lis<T>
+    internal class List<T>
     {
         internal void Clear()
         {

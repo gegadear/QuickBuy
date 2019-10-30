@@ -8,7 +8,14 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<ItemPedido> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(I => I.Id);
+
+            builder.
+                Property(I => I.ProdutoId)
+                .IsRequired();
+            builder
+                .Property(I => I.Quantidade)
+                .IsRequired();
         }
     }
 }

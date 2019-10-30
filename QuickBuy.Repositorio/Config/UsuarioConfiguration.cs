@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using QuickBuy.Dominio.Entidades;
-using static System.Collections.Immutable.ImmutableArray<T>;
 
 namespace QuickBuy.Repositorio.Config
 {
@@ -9,7 +9,29 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(u => u.Id);
+            //builder utiliza o padrão Fluent
+            builder
+                .Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(50);
+            builder
+                .Property(u => u.Senha)
+                .IsRequired()
+                .HasMaxLength(400);
+            builder
+                .Property(u => u.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+            builder
+                .Property(u => u.SobreNome)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                 .HasMany(u => u.Pedidos)
+                 .WithOne(p => p.Usuario);
         }
-    }
+
+       
 }
