@@ -33,5 +33,5 @@ namespace QuickBuy.Repositorio.Config
                  .WithOne(p => p.Usuario);
         }
 
-       
+    }   
 }
